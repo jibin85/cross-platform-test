@@ -17,10 +17,8 @@
 		<quarkus.platform.version>3.15.1</quarkus.platform.version>
 	</properties>
 
-	<!-- Camel BOM for managing compatible dependencies -->
 	<dependencyManagement>
 		<dependencies>
-			<!-- BOM for the Quarkus platform to manage consistent versions of Quarkus dependencies -->
 			<dependency>
 				<groupId>${quarkus.platform.group-id}</groupId>
 				<artifactId>${quarkus.platform.artifact-id}</artifactId>
@@ -44,11 +42,7 @@
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-smallrye-openapi</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-container-image-docker</artifactId>
-		</dependency>
-		<!-- Lombok library to reduce boilerplate code for Java classes (provided scope) -->
+		<!-- Removed docker-related dependency -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -69,8 +63,6 @@
 						<goals>
 							<goal>build</goal>
 							<goal>generate-code</goal>
-							<goal>generate-code-tests</goal>
-							<goal>native-image-agent</goal>
 						</goals>
 					</execution>
 				</executions>

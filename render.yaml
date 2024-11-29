@@ -1,10 +1,10 @@
 services:
   - type: web
     name: quarkus-addition-calculator
-    env: docker
+    env: java
     branch: main
-    buildCommand: ./mvnw clean package -Dnative=false
+    buildCommand: ./mvnw clean package -Pnative=false
     startCommand: java -jar target/*-runner.jar
     envVars:
-      - key: PORT
-        value: 7453
+      - key: JAVA_OPTS
+        value: -Dquarkus.http.host=0.0.0.0 -Dquarkus.http.port=${PORT}
