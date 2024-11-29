@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: quarkus-addition-calculator
+    env: docker
+    branch: main
+    buildCommand: ./mvnw clean package -Dnative=false
+    startCommand: java -jar target/*-runner.jar
+    envVars:
+      - key: PORT
+        value: 7453
