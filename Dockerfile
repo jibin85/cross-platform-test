@@ -1,5 +1,5 @@
-FROM openjdk:17-jdk-slim
+FROM openjdk:23-jdk-slim
 WORKDIR /app
-COPY target/*-runner.jar app.jar
+COPY target/*-runner.jar /app/app.jar
 EXPOSE 7453
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
