@@ -1,0 +1,96 @@
+LAYERS:
+
+FRONT END -> BACK END -> DB -> CONTAINERIZATION -> DEPLOYMENT -> ANDROID APP CREATION -> END USER
+
+
+Containerization Steps:
+
+Step 1: Test the application locally and make sure its running as expected:
+			compile the application:
+			mvn clean compile
+			
+			package the application:
+			mvn clean package
+			
+			run quarkus-run.jar:
+			java -jar target/quarkus-app/quarkus-run.jar
+
+Step 2: Build mvn quarkus project as a uber jar mode once the Step 1 is satisfied:
+
+			mvn clean package -Dquarkus.package.type=uber-jar 
+
+Step 3: Build cmd for docker local : 
+
+			docker build -t <app-name>:version .
+
+			Eg:
+			docker build -t addition-calculator:1.0.0 .
+
+Step 4: Run cmd for docker local:
+			Normal Mode: (The terminal stays connected to the container's output, If you press Ctrl + C, the container stops.)
+				docker run --name <container-name> -p <port_no>:<port_no> <app-name>
+				
+			Detached Mode: (The container runs in the background, The terminal doesn't stay connected to logs/output, It prints a container ID instead.)
+				docker run -d --name <container-name> -p <port_no>:<port_no> <app-name> (Use -d for detached mode, means runs in background)
+			How to Manage Detached Containers
+				1. Check running containers
+					docker ps
+				2. View logs
+					docker logs -f my-app
+				3. Stop the container
+					docker stop my-app
+				4. Restart if needed
+					docker restart my-app
+			When to Use Detached Mode?
+				✅ Production deployments (so the container keeps running)
+				✅ Long-running services (like Quarkus apps)
+				✅ When you don’t need immediate logs in the terminal
+			
+			Egs:
+			docker run --name addition-calculator -p 7453:7453 addition-calculator:1.0.0
+			docker run -d --name addition-calculator -p 7453:7453 addition-calculator:1.0.0
+
+Step 5: Login Docker:
+			docker login -u jibinthomas1999
+			pwd: tkn -  (addition-calculator:1.0.0 DECODE_THIS_TOKEN_dckr_pat_RbytndHMpNN0sBm2SdoRbvMojrE)
+
+Step 6: Tag the image
+			docker tag addition-calculator:1.0.0 jibinthomas1999/addition-calculator:1.0.0
+
+Step 7: Push the image
+			docker push jibinthomas1999/addition-calculator:1.0.0			
+
+
+
+Deployment Steps:
+
+Step 1: Create an account in Render
+Step 2: Click on Right top corner, + New, web service
+Step 3: Click on Existing Image, 
+Step 4: Give the below Docker hub image URL
+			Render deployment image URL:
+			docker.io/jibinthomas1999/addition-calculator:1.0.0
+Step 5: Click on Connect and then Deploy Service
+Step 6: Wait for deploy and service is Live
+Step 7: After successfull Deployment get the public URL
+			Render Public URL:
+			https://addition-calculator-1-0-0.onrender.com
+Step 8: Use this Public URL to connect with the service with any device to access
+
+
+Android application creation Steps:
+
+Step 1: Create an Account in MIT App Inventor
+			https://appinventor.mit.edu/ 
+Step 2: Make Sure you are not using the beginner version, try to use Intermediate or default version for the MIT App Inventory
+Step 3: Just create one Project
+Step 4: Add a Screen
+Step 5: Just in left Pallete -> User Interface -> WebViewer
+Step 6: Drag and drop the WebViewer
+Step 7: Click on the WebViewer component
+Step 8: Right side Properties Give the Render Public URL in the HomeURL part
+Step 9: Navigate to Build menu and build the project as a.apk
+Step 10: Download and use the Application in android Device
+
+
+

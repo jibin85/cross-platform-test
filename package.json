@@ -1,7 +1,0 @@
-{
-  "name": "quarkus-app",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "java -jar quarkus-run.jar"
-  }
-}
