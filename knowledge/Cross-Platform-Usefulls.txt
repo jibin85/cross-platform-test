@@ -91,6 +91,3 @@ Step 7: Click on the WebViewer component
 Step 8: Right side Properties Give the Render Public URL in the HomeURL part
 Step 9: Navigate to Build menu and build the project as a.apk
 Step 10: Download and use the Application in android Device
-
-
-
