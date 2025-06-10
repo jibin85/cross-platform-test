@@ -41,6 +41,9 @@ Step 4: Run cmd for docker local:
 					docker stop my-app
 				4. Restart if needed
 					docker restart my-app
+					
+					docker rm container_name_or_id
+
 			When to Use Detached Mode?
 				✅ Production deployments (so the container keeps running)
 				✅ Long-running services (like Quarkus apps)
@@ -64,7 +67,7 @@ Step 7: Push the image
 
 Deployment Steps:
 
-Step 1: Create an account in Render
+Step 1: Create an account in Render  (Sign in with GITHUB creds)
 Step 2: Click on Right top corner, + New, web service
 Step 3: Click on Existing Image, 
 Step 4: Give the below Docker hub image URL
